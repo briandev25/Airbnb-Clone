@@ -1,22 +1,27 @@
 import Image from 'next/image'
 import React from 'react'
-import { SearchIcon} from '@heroicons/react/solid'
+import { SearchIcon,MenuIcon,UserCircleIcon,GlobeAltIcon} from '@heroicons/react/solid'
 
 function Header() {
   return (
-    <header className='sticky grid grid-cols-3 top-0 z-50 bg-white shadow-md p-5 md:px-10'>
+    <header className='sticky grid grid-cols-1 md:grid-cols-3 justify-between  top-0 z-50 bg-white shadow-md p-5 md:px-10'>
      {/* left  */}
-     <div className='relative flex items-center h-10 cursor-pointer my-auto '>
-        <Image src ='https://links.papareact.com/qd3' layout='fill' objectFit='contain' objectPosition='left' />
+     <div className='hidden relative md:flex items-center h-10 cursor-pointer my-auto '>
+        <Image src ='https://links.papareact.com/qd3' layout='fill' objectFit='contain' objectPosition='left m-w-full '  />
      </div>
      {/* center */}
-     <div className='flex items-center md:border-2 md:shadow-sm rounded-full relative '>
-         <input type='text' placeholder='Start your search' className='flex-grow pl-5 rounded-full placeholder:text-black placeholder:font-semibold outline-none bg-transparent ' />
+     <div className='flex flex-1 items-center border-2 md:shadow-sm rounded-full relative px-5 py-3 md:p-0 bg-gray-200 md:bg-transparent '>
+         <input type='text' placeholder='Start your search' className='flex-grow pl-5 rounded-full placeholder:text-black placeholder:font-semibold placeholder:text-center outline-none bg-transparent ' />
          <SearchIcon className='hidden md:inline-flex h-8 bg-[#ff385c] text-white rounded-full p-2  cursor-pointer m-2 ' />
      </div>
       {/* right */}
-      <div>
-
+      <div className='hidden md:flex items-center justify-end space-x-6 mr-5 '>
+         <p className=' font-semibold  hover:bg-gray-50 px-4 rounded-full py-2 cursor-pointer'>Become a Host</p>
+         <GlobeAltIcon className='h-12 cursor-pointer text-gray-700 rounded-full p-2 hover:bg-gray-50 ' />
+         <div className='flex items-center space-x-2 border-2 rounded-full p-2 cursor-pointer hover:shadow-md '>
+           <MenuIcon className='h-5' />
+           <UserCircleIcon className='h-8 text-gray-600 ' />
+         </div>
       </div>
     </header>
   )
