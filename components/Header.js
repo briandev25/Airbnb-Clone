@@ -43,7 +43,7 @@ const searchNavigator =()=>(
     <header className='sticky grid grid-cols-1 md:grid-cols-3 justify-between  top-0 z-50 bg-white shadow-md p-5 md:px-10'>
      {/* left  */}
      <div onClick={() => router.push('/')} className='hidden relative md:flex items-center h-10 cursor-pointer my-auto '>
-        <Image src ='https://links.papareact.com/qd3' layout='fill' objectFit='contain' objectPosition='left m-w-full '  />
+        <Image src ='https://links.papareact.com/qd3' layout='fill' alt='' objectFit='contain' objectPosition='left m-w-full '  />
      </div>
      {/* center */}
      <div className='flex flex-1 items-center border-2 md:shadow-sm rounded-full relative px-5 py-3 md:p-0 bg-gray-200 md:bg-transparent '>

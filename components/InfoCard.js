@@ -3,11 +3,11 @@ import React from 'react'
 import { HeartIcon } from '@heroicons/react/outline'
 import { StarIcon } from '@heroicons/react/solid'
 
-function InfoCard({image,location,title,description,star,price,total}) {
+function InfoCard({img,location,title,description,star,price,total}) {
   return (
     <div className=' hover:bg-gray-50 flex  py-7 px-2 border-b cursor-pointer hover:shadow-lg group'>
         <div className='relative h-24 w-40 md:h-[200px] md:w-[300px] group-hover:scale-90 transition transform duration-200 ease-out' >
-            <Image src={image} layout='fill' objectFit='cover' className=' rounded-2xl' />
+            <Image src={img} alt='' layout='fill' objectFit='cover' className=' rounded-2xl' />
         </div>
         <div className='flex flex-col flex-grow flex-1 pl-6 py-2 pr-2'>
           <div className='flex justify-between '>

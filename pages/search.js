@@ -26,7 +26,7 @@ function Search({ searchResults }) {
                     
                 </div>
                 {searchResults.map((item) =>( 
-                <InfoCard  image={item.img} {...item}  />
+                <InfoCard  key={item.img} {...item}  />
                 ))}
             </section>
         </main>
