@@ -61,13 +61,15 @@ const searchNavigator =()=>(
          </div>
       </div>
       {searchInput && <div className=' flex flex-col col-span-3 mx-auto   mt-2'>
-        <DateRangePicker
+         <div>
+         <DateRangePicker
         className='w-full'
         ranges={[selectionRange]}
         minDate={new Date()}
         rangeColors={["#FD5B61"]}
         onChange={handleSelect}
          />
+         </div>
         <div>
             <h2 className=' text-lg font-semibold mb-3'>Add Guests</h2>
             <div className='flex flex-col md:flex-row justify-between px-1 py-6 border-y'>
