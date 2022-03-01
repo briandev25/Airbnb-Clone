@@ -6,13 +6,17 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css'; 
 
 import { DateRangePicker } from 'react-date-range';
+import { useRouter } from 'next/router';
 
-function Header() {
+function Header({ placeholder}) {
 const [searchInput,setSearchInput] = useState('');
 const [startDate,setStartDate] = useState(new Date());
 const [endDate,setEndDate] = useState(new Date());
 const [noOfAdults,setNoOfAdults] = useState(0);
 const [noOfChildren,setNoOfChildren]=useState(0);
+
+const router = useRouter();
+
 const selectionRange ={
   startDate,
   endDate,
@@ -23,16 +27,28 @@ const handleSelect = (ranges) =>{
       setStartDate(ranges.selection.startDate);
       setEndDate(ranges.selection.endDate);
 }
+const noOfPersons = () => noOfAdults + noOfChildren
+const searchNavigator =()=>(
+     router.push({
+       pathname:'/search',
+       query:{
+         location:searchInput,
+         startDate:startDate.toISOString(),
+         endDate:endDate.toISOString(),
+         persons:noOfPersons()
+       }
+     })
+);
   return (
     <header className='sticky grid grid-cols-1 md:grid-cols-3 justify-between  top-0 z-50 bg-white shadow-md p-5 md:px-10'>
      {/* left  */}
-     <div className='hidden relative md:flex items-center h-10 cursor-pointer my-auto '>
+     <div onClick={() => router.push('/')} className='hidden relative md:flex items-center h-10 cursor-pointer my-auto '>
         <Image src ='https://links.papareact.com/qd3' layout='fill' objectFit='contain' objectPosition='left m-w-full '  />
      </div>
      {/* center */}
      <div className='flex flex-1 items-center border-2 md:shadow-sm rounded-full relative px-5 py-3 md:p-0 bg-gray-200 md:bg-transparent '>
-         <input type='text' placeholder='Start your search' value={searchInput} onChange={(e) => setSearchInput(e.target.value)}
-          className='flex-grow pl-5 rounded-full placeholder:text-black placeholder:font-semibold placeholder:text-center outline-none bg-transparent ' />
+         <input type='text' placeholder={placeholder ? placeholder : 'Start your search'}  value={searchInput} onChange={(e) => setSearchInput(e.target.value)}
+          className='flex-grow pl-5 rounded-full placeholder:text-gray-400 placeholder:font-semibold placeholder:text-center outline-none bg-transparent ' />
          <SearchIcon className='hidden md:inline-flex h-8 bg-[#ff385c] text-white rounded-full p-2  cursor-pointer m-2 ' />
      </div>
       {/* right */}
@@ -86,7 +102,9 @@ const handleSelect = (ranges) =>{
                   </div>
                 </div>
             </div>
-            <div className='flex mt-6'><button onClick={() => setSearchInput('')} className='flex-grow text-gray-500'>Cancel</button><button className='flex-grow text-red-400'>Search</button></div>
+            <div className='flex mt-6'>
+              <button onClick={() => setSearchInput('')} className='flex-grow text-gray-500'>Cancel</button>
+              <button onClick={searchNavigator} className='flex-grow text-red-400'>Search</button></div>
         </div>  
          </div> }
     </header>

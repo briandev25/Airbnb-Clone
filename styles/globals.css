@@ -11,3 +11,9 @@ body {
 * {
   box-sizing: border-box;
 }
+
+@layer components{
+   .categoryButton{
+      @apply inline-block px-4 py-1 mb-3 border cursor-pointer hover:shadow-lg rounded-full active:scale-95 active:bg-gray-50 transition transform duration-100 ease-in-out
+   }
+}
